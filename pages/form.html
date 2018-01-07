@@ -1,0 +1,45 @@
+<div class="formpage row" style="padding-top:5%;">
+
+  <form class="custom-form">
+    <div class="row form-group">
+      <label for="customerName" class="col-md-4 col-lg-4 col-xxs-4">Customer Name</label>
+      <input id="customerName" class="form-control col-md-8 col-lg-8 col-xxs-8" type="text" ng-model="formObject.customer_name"></input>
+    </div>
+
+    <div class="row form-group">
+      <label for="imeiNumber" class="col-md-4 col-lg-4 col-xxs-4">IMEI Number</label>
+      <input id="imeiNumber" class="form-control col-md-8 col-lg-8 col-xxs-8" type="text" ng-model="formObject.customer_imei"></input>
+    </div>
+
+    <div class="row form-group">
+      <label for="contact" class="col-md-4 col-lg-4 col-xxs-4">Contact</label>
+      <input id="contact" class="form-control col-md-8 col-lg-8 col-xxs-8" type="text" ng-model="formObject.customer_contact"></input>
+    </div>
+
+    <div class="row form-group">
+      <label for="accesories" class="col-md-4 col-lg-4 col-xxs-4">Accessories</label>
+      <textarea class="form-control col-md-8 col-lg-8 col-xxs-8" rows="3" id="accesories" ng-model="formObject.accessories"></textarea>
+    </div>
+
+    <div class="row form-group">
+      <label for="problem" class="col-md-4 col-lg-4 col-xxs-4">Issue</label>
+      <textarea class="form-control col-md-8 col-lg-8 col-xxs-8" rows="3" id="problem" ng-model="formObject.issue"></textarea>
+    </div>
+
+    <div class="row form-group">
+      <label for="delDate" class="col-md-2 col-lg-2 col-xxs-2">Return</label>
+      <input id="delDate" class="form-control col-md-4 col-lg-4 col-xxs-4" type="date" ng-model="formObject.delivery_date"></input>
+
+      <label for="rate" class="col-md-2 col-lg-2 col-xxs-2">Rate</label>
+      <input id="rate" class="form-control col-md-4 col-lg-4 col-xxs-4" type="text" ng-model="formObject.rate"></input>
+    </div>
+
+    <button class="btn btn-primary" style="float:right" ng-click="submitForm()">Submit</button>
+  </form>
+
+
+
+
+
+
+</div>

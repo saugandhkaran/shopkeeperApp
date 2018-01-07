@@ -1,0 +1,36 @@
+{
+  "name": "mobileservice",
+  "version": "1.0.0",
+  "description": "an application to help a repair person to manage his inventory",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"nodemon server.js\" \"lite-server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saugandhkaran/to-do-list.git"
+  },
+  "author": "Saugandh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saugandhkaran/to-do-list/issues"
+  },
+  "homepage": "https://github.com/saugandhkaran/to-do-list#readme",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "angular-ui-router": "^0.4.3",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0-beta.2",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "init": "^0.1.2",
+    "jquery": "^3.2.1",
+    "lite-server": "^2.3.0",
+    "mongodb": "^3.0.0-rc0",
+    "mongoose": "^4.13.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.8"
+  }
+}
