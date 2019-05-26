@@ -1,0 +1,113 @@
+<div class="search-bar">
+    <mat-form-field>
+        <input matInput placeholder="Search by name" [(ngModel)]="searchCriteria">
+      </mat-form-field>
+</div>
+
+<div class="sorting-options">
+<mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle value="today">Today</mat-button-toggle>
+    <mat-button-toggle value="returned">Returned</mat-button-toggle>
+    <mat-button-toggle value="fixed">Fixed</mat-button-toggle>
+    <mat-button-toggle value="pending">Pending</mat-button-toggle>
+    <mat-button-toggle value="">All</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<br>
+
+<div *ngFor="let item of mobileData | filterList:searchCriteria | filterList:group.value">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header [ngClass]="{'completedStatus': item.status === 'Returned', 'fixedStatus': item.status === 'Fixed', 'notFixed': item.status === 'notFixed'}">
+            <mat-panel-title>
+              {{item.name}} | {{item.contact}}
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+              {{item.status}}
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <div class="section">
+              <div class="section-header">
+                Issue
+              </div>
+              <div class="section-detail">
+                {{item.issue}}
+              </div>
+            </div>
+          <div class="section">
+            <div class="section-header">
+              Bill number
+            </div>
+            <div class="section-detail">
+              {{item._id}}
+            </div>
+          </div>
+          <div class="section">
+              <div class="section-header">
+                Registered Date
+              </div>
+              <div class="section-detail">
+                {{item.date | date}}
+              </div>
+            </div>
+            <div class="section">
+                <div class="section-header">
+                  IMEI
+                </div>
+                <div class="section-detail">
+                  {{item.imei}}
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header">
+                  Accessories
+                </div>
+                <div class="section-detail">
+                  {{item.accessories}}
+                </div>
+              </div>
+            <div class="section">
+                <div class="section-header">
+                  Return Date
+                </div>
+                <div class="section-detail">
+                  {{item.return | date}}
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header">
+                  Estimated Rate
+                </div>
+                <div class="section-detail">
+                  INR {{item.rate}}
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-header">
+                  Advance
+                </div>
+                <div class="section-detail">
+                  INR {{item.advance}}
+                </div>
+            </div>
+            <br>
+            <div class="section">
+                <div class="section-header">
+                </div>
+                <div class="section-detail">
+                    <button mat-button (click)="changeStatus('Fixed',item._id)" *ngIf="item.status === 'Pending'">Fixed</button>
+                    <button mat-button (click)="changeStatus('notFixed',item._id)" *ngIf="item.status === 'Pending'">Not Fixed</button>
+                    <button mat-button *ngIf="item.status != 'Returned'" (click)="goToEditMode(item._id)" class="edit">Edit</button>
+                    <button mat-button (click)="changeStatus('Returned', item._id)" *ngIf="item.status === 'Fixed'  || item.status === 'notFixed'">Return</button>
+                    <!-- <form>
+                        <mat-form-field>
+                            <input matInput formControlName="amount" placeholder="Amount">
+                          </mat-form-field>
+                        <button mat-stroked-button color="primary" [disabled]="item.status !== 'Fixed'">Returned</button>
+                    </form> -->
+
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

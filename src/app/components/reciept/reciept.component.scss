@@ -1,0 +1,36 @@
+.reciept-card {
+  width: 19cm;
+  height: 7.6cm;
+  border: 1px black dotted;
+  margin: 0 auto;
+}
+
+.reciept-brand {
+  text-align: center;
+}
+
+.reciept-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.reciept-left {
+  flex: 2;
+  padding-left: 4px;
+}
+
+.reciept-right {
+  flex: 4;
+  border-left: 1px dotted black;
+  padding-left: 4px;
+}
+
+.reciept-footer {
+  float: right;
+  padding-right: 4px;
+}
+
+button {
+  background-color: #b71540;
+  color: white;
+}

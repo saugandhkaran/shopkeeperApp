@@ -1,0 +1,49 @@
+.section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.section-header {
+  flex: 2;
+  font-weight: bold;
+}
+
+.section-detail {
+  flex: 6;
+}
+
+button {
+  margin-right: 4%;
+}
+
+.search-bar {
+  text-align:center;
+}
+
+.completedStatus {
+  background-color: #78e08f;
+  color: white;
+}
+
+.fixedStatus {
+  background-color: #fad390;
+}
+
+button {
+  background-color: #b71540;
+  color: white;
+}
+
+.sorting-options {
+  text-align:center;
+}
+
+.notFixed {
+  background-color: #e55039;
+  color: white;
+}
+
+.edit {
+  background-color: #0a3d62;
+  color: white;
+}

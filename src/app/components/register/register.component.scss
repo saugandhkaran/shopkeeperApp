@@ -1,0 +1,26 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-left {
+  flex: 1;
+}
+
+.content-right {
+  flex: 1;
+}
+
+button {
+  background-color: #b71540;
+  color: white;
+}

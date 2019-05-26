@@ -1,0 +1,52 @@
+<div class="content">
+<div class="content-left"></div>
+<div class="content-right">
+<form [formGroup]="registerForm" (ngSubmit)="registerDevice(registerForm)">
+<div class="example-container">
+  <h3 *ngIf="!enableEditMode">Registration</h3>
+  <h3 *ngIf="enableEditMode">Edit</h3>
+  <mat-form-field>
+    <input matInput formControlName="name" required placeholder="Customer Name">
+    <!-- <mat-error *ngIf=".hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error> -->
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="imei" placeholder="IMEI Number">
+
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="contact" placeholder="Contact">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="accessories" placeholder="Accessories">
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput formControlName="issue" placeholder="Issue"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="date" formControlName="return" matInput placeholder="Return Date" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="rate" placeholder="Estimate Rate">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput formControlName="advance" placeholder="Advance (if applicable)">
+    </mat-form-field>
+
+  <button *ngIf="!enableEditMode" mat-button type="submit">Register</button>
+  <button *ngIf="enableEditMode" mat-button type="submit">Edit</button>
+</div>
+</form>
+</div>
+</div>
+
+
+
