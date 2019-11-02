@@ -1,11 +1,14 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
-
+const server = require("./server");
+const db = require("./DB.js");
+const routes = require("./expressRoutes/mobileRouter");
+const fs = require('fs');
 let win;
 
 function createWindow() {
-  win = new BrowserWindow({ width: 800, height: 600 });
+  win = new BrowserWindow({ width: 1024, height: 768 });
 
   // load the dist folder from Angular
   win.loadURL(

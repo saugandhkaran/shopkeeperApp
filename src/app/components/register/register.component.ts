@@ -23,26 +23,12 @@ export class RegisterComponent implements OnInit {
     rate: new FormControl(''),
     date: new FormControl(''),
     status: new FormControl(''),
-    advance: new FormControl(''),
-    _id: new FormControl('')
+    advance: new FormControl('')
   });
 
   enableEditMode = false;
 
   ngOnInit() {
-    this.fetchIdFromUrl();
-  }
-
-  fetchIdFromUrl() {
-    this.activatedRoute.queryParams.subscribe(params => {
-      const id = params['id'];
-      this.mobileService.getBillDetails(id).subscribe((data) => {
-        this.enableEditMode = true;
-        this.setFormObjectForEdit(data);
-      }, (error) => {
-        this.enableEditMode = false;
-      });
-    });
   }
 
   setFormObjectForEdit(data) {
@@ -56,8 +42,7 @@ export class RegisterComponent implements OnInit {
       rate: data.rate,
       date: data.date,
       status: data.status,
-      advance: data.advance,
-      _id: data._id
+      advance: data.advance
     });
   }
 

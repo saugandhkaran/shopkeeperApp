@@ -23,7 +23,7 @@ export class RecieptComponent implements OnInit {
       var id = params['id'];
       this.mobileService.getBillDetails(id).subscribe((data) => {
         console.log(data);
-        this.recieptDetails = data;
+        this.recieptDetails = data[0];
       })
     });
   }

@@ -1,71 +1,60 @@
 var express = require('express');
-var app = express();
+var Expressapp = express();
 var mobileRoutes = express.Router();
+var Datastore = require('nedb');
+const {app} = require('electron');
 
-// Require Item model in our routes module
-var Mobile = require('../models/mobile');
-
-// Defined store route
-mobileRoutes.route('/register').post(function (req, res) {
-  var mobile = new Mobile(req.body);
-  mobile.save()
-    .then(item => {
-    res.status(200).json({'mobile': 'mobile details added successfully', 'id': item._id});
-    })
-    .catch(err => {
-    res.status(400).send("unable to save to database");
-    });
+const db = new Datastore({
+  filename: `${process.env.NODE_ENV === 'dev' ? '.' : app.getAppPath('Desktop')}/data/datafile`,
+  autoload: true
 });
 
-// Defined get data(index or listing) route
+// Defined store route - done
+mobileRoutes.route('/register').post(function (req, res) {
+  const mobileData = req.body;
+  db.insert(mobileData, function (err, item) {
+    if (err) {
+      res.status(400).send("unable to save to database");
+    } else {
+      res.status(200).json({'mobile': 'mobile details added successfully', 'id': item._id});
+    }
+  })
+});
+
+// Defined get data(index or listing) route - done
 mobileRoutes.route('/').get(function (req, res) {
-  Mobile.find(function (err, mobileData){
+  db.find( {}, function (err, mobileData){
     if(err){
       console.log(err);
     }
     else {
+      console.log(mobileData);
       res.json(mobileData);
     }
   });
 });
 
-// Defined edit route
+// Defined edit route - done
 mobileRoutes.route('/edit/:id').get(function (req, res) {
   var id = req.params.id;
-  Mobile.findById(id, function (err, mobileData){
+  Mobile.findOne({ _id: id }, function (err, mobileData){
       res.json(mobileData);
   });
 });
 
 //  Defined update route
 mobileRoutes.route('/update/:id').post(function (req, res) {
-  Mobile.findById(req.params.id, function(err, mobileData) {
-    if (!mobileData)
-      return next(new Error('Could not load Document'));
-    else {
-      if(req.body.date) {
-        mobileData = req.body;
-        mobileData.save().then(mobileData => {
-          console.log(mobileData);
-          res.json({msg: 'Update completed', id: mobileData._id});
-      }) .catch(err => {
-        res.status(400).send("unable to update the database");
-      });
-      } else {
-        mobileData.status = req.body.status;
-        mobileData.save().then(mobileData => {
-          res.json({msg:'Update completed', id: mobileData._id});
-      }) .catch(err => {
-        res.status(400).send("unable to update the database");
-      });
-      }
-
+  db.update({ _id: req.params.id }, { $set: { status: req.body.status } }, function (err, success) {
+    if (err) {
+      res.status(400).send("unable to update the database");
+    } else {
+      res.status(200).json({msg:'Update completed', id: success._id});
     }
-  });
+  })
 });
 
 mobileRoutes.route('/:id').get(function(req, res) {
-  Mobile.findById(req.params.id, function(err, mobileData) {
+  db.find({_id: req.params.id}, function(err, mobileData) {
     if(!mobileData){
       res.status(400);
       res.json({
