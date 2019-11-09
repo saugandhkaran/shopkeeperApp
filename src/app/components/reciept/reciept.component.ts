@@ -29,12 +29,6 @@ export class RecieptComponent implements OnInit {
   }
 
   print() {
-    let printDiv = document.getElementById('reciept');
-    let printArea = window.open();
-    printArea.document.write(printDiv.innerHTML);
-    printArea.document.close();
-    printArea.focus();
-    printArea.print();
-    printArea.close();
+    window.print();
   }
 }

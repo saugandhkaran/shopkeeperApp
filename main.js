@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, shell, BrowserWindow } = require("electron");
 const path = require("path");
 const url = require("url");
 const server = require("./server");
@@ -25,6 +25,12 @@ function createWindow() {
   win.on("closed", () => {
     win = null;
   });
+
+  // This print solution
+  // win.webContents.on("new-window", function(event, url) {
+  //   event.preventDefault();
+  //   shell.openExternal(url);
+  // });
 }
 
 app.on("ready", createWindow);

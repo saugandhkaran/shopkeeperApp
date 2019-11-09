@@ -6,6 +6,7 @@ const {app} = require('electron');
 
 const db = new Datastore({
   filename: `${process.env.NODE_ENV === 'dev' ? '.' : app.getAppPath('Desktop')}/data/datafile`,
+  // filename: 'datafile',
   autoload: true
 });
 

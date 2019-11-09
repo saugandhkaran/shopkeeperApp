@@ -99,6 +99,7 @@
                     <button mat-button (click)="changeStatus('notFixed',item._id)" *ngIf="item.status === 'Pending'">Not Fixed</button>
                     <button mat-button *ngIf="item.status != 'Returned'" (click)="goToEditMode(item._id)" class="edit">Edit</button>
                     <button mat-button (click)="changeStatus('Returned', item._id)" *ngIf="item.status === 'Fixed'  || item.status === 'notFixed'">Return</button>
+                    <button mat-button (click)="printReciept(item._id)">Print</button>
                     <!-- <form>
                         <mat-form-field>
                             <input matInput formControlName="amount" placeholder="Amount">

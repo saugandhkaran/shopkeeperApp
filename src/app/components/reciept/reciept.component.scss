@@ -34,3 +34,7 @@ button {
   background-color: #b71540;
   color: white;
 }
+
+@media print {
+  @page { margin: -60px; }
+}

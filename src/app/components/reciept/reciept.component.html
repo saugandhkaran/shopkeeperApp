@@ -8,7 +8,7 @@ margin: 0 auto;" id="reciept">
       <p style="margin-top: -20px;">PWD Road, Baharagora, Ph: 9431374698</p>
     </div>
     <div class="reciept-content" style="display: flex;
-    flex-wrap: wrap;">
+    flex-wrap: wrap; justify-content: flex-start;">
       <div class="reciept-left" style=" flex: 2;
       padding-left: 4px;">
         <h4>Billno: {{recieptDetails._id}}</h4>
@@ -26,6 +26,7 @@ margin: 0 auto;" id="reciept">
     <div class="reciept-footer" style="float: right;
     padding-right: 4px;">
       <p>Signature - for SnK Mobile Repairing</p>
+      <p style="margin-top: -15px;">{{recieptDetails.date | date}}</p>
     </div>
   </div>
 

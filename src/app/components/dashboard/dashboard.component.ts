@@ -32,6 +32,10 @@ export class DashboardComponent implements OnInit {
 
   goToEditMode(id) {
     this.router.navigate(['/register'] , {queryParams: {id: id}});
+  };
+
+  printReciept(id) {
+    this.router.navigate(['/generateReciept'] , {queryParams: {id: id}});
   }
 
 }
