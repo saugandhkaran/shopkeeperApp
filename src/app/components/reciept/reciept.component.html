@@ -1,33 +1,60 @@
 
-<div class="reciept-card" style="width: 19cm;
-height: 7.6cm;
-border: 1px black dotted;
-margin: 0 auto;" id="reciept">
-    <div class="reciept-brand" style="text-align: center;">
-      <h2>SnK Mobile Repairing </h2>
-      <p style="margin-top: -20px;">PWD Road, Baharagora, Ph: 9431374698</p>
-    </div>
-    <div class="reciept-content" style="display: flex;
-    flex-wrap: wrap; justify-content: flex-start;">
-      <div class="reciept-left" style=" flex: 2;
-      padding-left: 4px;">
-        <h4>Billno: {{recieptDetails._id}}</h4>
-        <h4>Return Date: {{recieptDetails.return | date}}</h4>
-        <h4>Estimated Rate: {{recieptDetails.rate}}</h4>
+<div class="reciept-card" id="reciept">
+    <div class="reciept-header">
+      <div class="reciept-brand">
+        <h3>SnK Mobile Repairing </h3>
+        <p style="margin-top: -20px;">PWD Road, Baharagora, Ph: 9431374698</p>
       </div>
-      <div class="reciept-right" style="flex: 4;
-      border-left: 1px dotted black;
-      padding-left: 4px;">
-        <h4>Name: {{recieptDetails.name}}</h4>
-        <h4>Accessories: {{recieptDetails.accessories}}</h4>
-        <h4>Issue: {{recieptDetails.issue}}</h4>
+      <div class="reciept-brand">
+          <h3>RECEIPT</h3>
+          <p style="margin-top: -20px;">{{recieptDetails.date | date: "dd-MMM-yyyy HH:mm:ss"}}</p>
+        </div>
+    </div>
+    <div class="reciept-content">
+      <div class="reciept-left">
+        <table>
+          <tr>
+            <th>Sl: </th>
+            <td>{{recieptDetails._id}}</td>
+          </tr>
+          <tr>
+              <th>Model: </th>
+              <td>{{recieptDetails.model}}</td>
+            </tr>
+          <tr>
+            <th>Return: </th>
+            <td>{{recieptDetails.return | date}}</td>
+          </tr>
+            <th>Estimated: </th>
+            <td>{{recieptDetails.rate}}</td>
+        </table>
+      </div>
+      <div class="reciept-right">
+        <table>
+            <tr>
+              <th>Name: </th>
+              <td>{{recieptDetails.name}}</td>
+            </tr>
+            <tr>
+                <th>Issue: </th>
+                <td>{{recieptDetails.issue}}</td>
+              </tr>
+            <tr>
+              <th>Accesories: </th>
+              <td>{{recieptDetails.accessories}}</td>
+            </tr>
+          </table>
       </div>
     </div>
-    <div class="reciept-footer" style="float: right;
-    padding-right: 4px;">
-      <p>Signature - for SnK Mobile Repairing</p>
-      <p style="margin-top: -15px;">{{recieptDetails.date | date}}</p>
+    <div class="reciept-footer">
+        <div class="signature" style="text-align:right;margin-top: 40px;">
+            Signature (SnK)
+          </div>
+      <div class="nb">
+          <p>Working hours: 8:30 AM - 1:30 PM | 4:00 PM - 7:00 PM. <b>Saturdays closed</b> <br> This receipt is valid for 3 months from dated. Deposit of delivery is necessary at the time of delivery</p>
+      </div>
     </div>
   </div>
+  
 
   <button mat-button (click)="print()">Print</button>

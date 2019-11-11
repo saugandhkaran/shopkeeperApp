@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     name: new FormControl('', Validators.required),
-    imei: new FormControl(''),
+    model: new FormControl(''),
     contact: new FormControl(''),
     accessories: new FormControl(''),
     issue: new FormControl(''),
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
   setFormObjectForEdit(data) {
     this.registerForm.patchValue({
       name: data.name,
-      imei: data.imei,
+      model: data.model,
       contact: data.contact,
       accessories: data.accessories,
       issue: data.issue,
