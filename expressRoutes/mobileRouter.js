@@ -10,10 +10,40 @@ const db = new Datastore({
   autoload: true
 });
 
+const indexFinder = new Datastore({
+  filename: `${process.env.NODE_ENV === 'dev' ? '.' : app.getAppPath('Desktop')}/data/indexFinder`,
+  // filename: 'indexMaker',
+  autoload: true
+})
+
 // Defined store route - done
 mobileRoutes.route('/register').post(function (req, res) {
-  const mobileData = req.body;
+  console.log('req',req.body);
+  let mobileData = { ...req.body };
+  console.log(mobileData);
+  indexFinder.find({}, function (err, index) {
+    if (index.length == 0) {
+      mobileData.slno = 1;
+      indexFinder.insert({ index: 1 }, function (err, succ) {
+        if (err) {
+          console.log('index insert err', err);
+        }
+      })
+    } else {
+      mobileData.name = 'Saugandh';
+      mobileData.slno = index[0].index + 1;
+    }
+  });
+  console.log('second', mobileData);
   db.insert(mobileData, function (err, item) {
+    indexFinder.update({}, { $set: { index: mobileData.slno } }, {},
+      function (err, succ) {
+        if (err) {
+          console.log('Failed to increase index', err);
+        } else {
+          console.log('success index', succ);
+      }
+    })
     if (err) {
       res.status(400).send("unable to save to database");
     } else {
@@ -29,7 +59,6 @@ mobileRoutes.route('/').get(function (req, res) {
       console.log(err);
     }
     else {
-      console.log(mobileData);
       res.json(mobileData);
     }
   });
